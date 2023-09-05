@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&display=swap");
+
+$ff-sans: "Work Sans", sans-serif;
+
+/* Font weight */
+$fw-lighter: lighter;
+$fw-light: 300;
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-semibold: 600;
+$fw-bold: 700;
+$fw-bolder: bolder;
+$fw-base: $fw-regular;
+
+/* Font sizes */
+$fs-base: 1rem; // default of `16px`
+$fs-x-sm: $fs-base * 0.75; // 12px
+$fs-sm: $fs-base * 0.875; // 14px
+
+$fs-md: $fs-base * 1.125; // 18px
+$fs-lg: $fs-base * 1.25; // 20px
+$fs-x-lg: $fs-base * 1.5; // 24px
+$fs-xx-lg: $fs-base * 2; //32px
+$fs-xxx-lg: $fs-base * 2.5; //40px

@@ -1,4 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+// abstract
+@import "abstract/index";
 
-// bootstrap styles
-@import "external/bootstrap/style.scss";
+// vendors
+@import "vendors/index";
+
+// base
+@import "base/index";
+
+// components
+@import "components/index";
+
+// Layout
+@import "layouts/index";
