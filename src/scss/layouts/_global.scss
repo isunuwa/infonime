@@ -1,0 +1,19 @@
+body {
+  font-family: $ff-sans;
+}
+
+// Usage
+.centered-content {
+  @include centered-content(5px);
+}
+
+// background colors for global use
+.inf {
+  &-nav-primary {
+    background-color: $black-700;
+  }
+
+  &-bg-dark {
+    background-color: $black-800;
+  }
+}
