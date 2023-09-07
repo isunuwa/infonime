@@ -1,3 +1,65 @@
+<div class="random-anime">
+  <div class="row" *ngIf="randomAnime">
+    <div class="col-md-7">
+      <div class="anime-banner">
+        <div
+          mode="cover"
+          class="smart-image"
+          style="background-image: url('{{
+            randomAnime.images.webp.large_image_url
+          }}');"
+        ></div>
+        <img />
+      </div>
+    </div>
+    <div class="col-md-5">
+      <div class="d-flex align-items-end h-100">
+        <div class="card-body">
+          <h5 class="card-title display-6 fw-bold mb-2">
+            {{ randomAnime.title }}
+          </h5>
+          <p class="small card-text line-clamp mb-2">
+            {{ randomAnime.synopsis }}
+          </p>
+          <div class="small anime-overview">
+            <ng-container *ngIf="randomAnime.score ?? ''">
+              <p>
+                Score:
+                {{ randomAnime.score }} by {{ randomAnime.scored_by }}
+              </p>
+            </ng-container>
+            <p *ngIf="randomAnime.status ?? ''">
+              Status: {{ randomAnime.status }}
+            </p>
+            <p *ngIf="randomAnime.episodes ?? ''">
+              Episodes: {{ randomAnime.episodes }}
+            </p>
+            <p *ngIf="randomAnime.type ?? ''">Type: {{ randomAnime.type }}</p>
+            <p *ngIf="randomAnime.rating ?? ''">
+              Rating: {{ randomAnime.rating }}
+            </p>
+            <p *ngIf="randomAnime.studios ?? ''">
+              Studios:
+              <span
+                class="small py-1 px-2 bg-secondary me-2"
+                *ngFor="let studio of randomAnime.studios"
+              >
+                {{ studio.name }}
+              </span>
+            </p>
+            <p class="m-0" *ngIf="randomAnime.genres ?? ''">
+              Genres:
+              <span class="small me-2" *ngFor="let genre of randomAnime.genres">
+                {{ genre.name }}
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="row">
   <div class="col-md-3" *ngFor="let anime of animes">
     <div class="anime-banner">
