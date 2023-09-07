@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-md-3" *ngFor="let anime of animes">
+    <div class="anime-banner">
+      <img src="{{ anime.images.webp.image_url }}" alt="{{ anime.title }}" />
+    </div>
+    <div class="anime-details">
+      <p>{{ anime.title }}</p>
+      <p>{{ anime.rating }}</p>
+      <p>{{ anime.status }}</p>
+    </div>
+  </div>
+</div>
