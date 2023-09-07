@@ -8,16 +8,24 @@ import { Anime } from '../../models/anime.module';
 })
 export class AnimeListComponent implements OnInit {
   animes: Anime[] = [];
+  randomAnime!: Anime;
 
   constructor(private animeService: AnimeService) {}
 
   ngOnInit(): void {
-    this.getAnimes();
+    // this.getAnimes();
+    this.getRandomAnime();
   }
 
   getAnimes(): void {
     this.animeService.getAnimeList().subscribe((response) => {
       this.animes = response.data;
+    });
+  }
+
+  getRandomAnime(): void {
+    this.animeService.getRandomAnime().subscribe((response) => {
+      this.randomAnime = response.data;
     });
   }
 }

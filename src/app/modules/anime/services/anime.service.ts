@@ -12,4 +12,8 @@ export class AnimeService {
   getAnimeList(): Observable<any> {
     return this.httpClient.get<any>(`${environment.JIKAN_API_URl}/anime`);
   }
+
+  getRandomAnime(): Observable<any> {
+    return this.httpClient.get<any>(`${environment.JIKAN_API_URl}/random/anime`);
+  }
 }
