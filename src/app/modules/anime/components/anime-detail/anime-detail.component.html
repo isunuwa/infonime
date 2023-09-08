@@ -1,1 +1,55 @@
-<p>anime-detail works!</p>
+<div class="anime-detail">
+  <div class="row" *ngIf="anime">
+    <div class="col-md-3">
+      <div class="anime-banner">
+        <div class="img-container img-container-6-9">
+          <img
+            src="{{ anime.images.webp.image_url }}"
+            alt="{{ anime.title }}"
+            class="smart-image"
+            mode="cover"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div class="d-flex align-items-end h-100">
+        <div class="card-body">
+          <h5 class="card-title display-6 fw-bold mb-2">
+            {{ anime.title }}
+          </h5>
+          <p class="small card-text line-clamp mb-2">
+            {{ anime.synopsis }}
+          </p>
+          <div class="small anime-overview">
+            <ng-container *ngIf="anime.score ?? ''">
+              <p>
+                Score:
+                {{ anime.score }} by {{ anime.scored_by }}
+              </p>
+            </ng-container>
+            <p *ngIf="anime.status ?? ''">Status: {{ anime.status }}</p>
+            <p *ngIf="anime.episodes ?? ''">Episodes: {{ anime.episodes }}</p>
+            <p *ngIf="anime.type ?? ''">Type: {{ anime.type }}</p>
+            <p *ngIf="anime.rating ?? ''">Rating: {{ anime.rating }}</p>
+            <p *ngIf="anime.studios ?? ''">
+              Studios:
+              <span
+                class="small py-1 px-2 bg-secondary me-2"
+                *ngFor="let studio of anime.studios"
+              >
+                {{ studio.name }}
+              </span>
+            </p>
+            <p class="m-0" *ngIf="anime.genres ?? ''">
+              Genres:
+              <span class="small me-2" *ngFor="let genre of anime.genres">
+                {{ genre.name }}
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
