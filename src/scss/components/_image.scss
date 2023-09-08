@@ -1,4 +1,7 @@
 .img-container {
+  overflow: hidden;
+  position: relative;
+
   &::after {
     content: "";
     display: block;

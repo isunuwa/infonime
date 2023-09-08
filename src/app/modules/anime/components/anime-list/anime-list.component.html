@@ -3,12 +3,13 @@
     <div class="col-md-7">
       <div class="anime-banner">
         <div class="img-container img-container-16-9">
-          <img
-            src="{{ randomAnime.images.webp.image_url }}"
-            alt="{{ randomAnime.title }}"
-            class="smart-image"
+          <div
             mode="cover"
-          />
+            class="smart-image"
+            [style.background-image]="
+              'url(' + randomAnime.images.webp.image_url + ')'
+            "
+          ></div>
         </div>
         <a
           title="{{ randomAnime.title }}"
