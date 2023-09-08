@@ -9,6 +9,7 @@ import { Anime } from '../../models/anime.module';
 })
 export class AnimeListComponent implements OnInit {
   animes: Anime[] = [];
+  topAnimes: Anime[] = [];
   randomAnime!: Anime;
 
   constructor(private animeService: AnimeService) {}
@@ -16,11 +17,22 @@ export class AnimeListComponent implements OnInit {
   ngOnInit(): void {
     // this.getAnimes();
     this.getRandomAnime();
+    // this.getTopAnimes();
   }
 
   getAnimes(): void {
     this.animeService.getAnimeList().subscribe((response) => {
+      console.log(response.data);
+
       this.animes = response.data;
+    });
+  }
+
+  getTopAnimes(): void {
+    this.animeService.getTopAnimeList().subscribe((response) => {
+      console.log(response.data);
+
+      this.topAnimes = response.data;
     });
   }
 

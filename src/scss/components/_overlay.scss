@@ -31,12 +31,3 @@
     }
   }
 }
-
-.gradient-hover,
-.anime-banner {
-  &:hover {
-    .gradient {
-      opacity: 0;
-    }
-  }
-}
