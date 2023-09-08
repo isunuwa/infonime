@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 
@@ -10,7 +10,16 @@ export class AnimeService {
   constructor(private httpClient: HttpClient) {}
 
   getAnimeList(): Observable<any> {
+    // let parameters = { sfw: false };
+    // let queryParams = new HttpParams({ fromObject: parameters });
+
     return this.httpClient.get<any>(`${environment.JIKAN_API_URl}/anime`);
+  }
+
+  getTopAnimeList(): Observable<any> {
+    return this.httpClient.get<any>(
+      `${environment.JIKAN_API_URl}/top/anime?limit=5`
+    );
   }
 
   getRandomAnime(): Observable<any> {

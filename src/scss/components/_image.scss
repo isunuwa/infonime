@@ -74,6 +74,18 @@
   }
 }
 
+.img-rounded {
+  border-radius: 14px;
+}
+
+.img-wrapper {
+  &:hover {
+    .gradient {
+      opacity: 0;
+    }
+  }
+}
+
 .smart-image {
   position: absolute;
   top: 0;
