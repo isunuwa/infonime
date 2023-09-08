@@ -5,11 +5,10 @@
         <div
           mode="cover"
           class="smart-image"
-          style="background-image: url('{{
-            randomAnime.images.webp.large_image_url
-          }}');"
+          [style.background-image]="
+            'url(' + randomAnime.images.webp.large_image_url + ')'
+          "
         ></div>
-        <img />
       </div>
     </div>
     <div class="col-md-5">
