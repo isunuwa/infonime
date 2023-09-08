@@ -14,6 +14,13 @@ export class AnimeService {
   }
 
   getRandomAnime(): Observable<any> {
-    return this.httpClient.get<any>(`${environment.JIKAN_API_URl}/random/anime`);
+    return this.httpClient.get<any>(
+      `${environment.JIKAN_API_URl}/random/anime`
+    );
+  }
+
+  getAnimeDetail(id: number): Observable<any> {
+    let url = `${environment.JIKAN_API_URl}/anime/${id}`;
+    return this.httpClient.get<any>(url).pipe();
   }
 }

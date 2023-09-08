@@ -2,13 +2,20 @@
   <div class="row" *ngIf="randomAnime">
     <div class="col-md-7">
       <div class="anime-banner">
-        <div
-          mode="cover"
-          class="smart-image"
-          [style.background-image]="
-            'url(' + randomAnime.images.webp.large_image_url + ')'
-          "
-        ></div>
+        <div class="img-container img-container-16-9">
+          <img
+            src="{{ randomAnime.images.webp.image_url }}"
+            alt="{{ randomAnime.title }}"
+            class="smart-image"
+            mode="cover"
+          />
+        </div>
+        <a
+          title="{{ randomAnime.title }}"
+          class="anime-link"
+          routerLink="anime/{{ randomAnime.mal_id }}"
+        ></a>
+        <div class="gradient linear-gradient to-right gradient-dark"></div>
       </div>
     </div>
     <div class="col-md-5">

@@ -1,0 +1,42 @@
+.gradient {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 0;
+  @include css3-prefix(transition, opacity 0.3s ease);
+
+  &.full-gradient {
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  &.linear-gradient {
+    &.to-right {
+      &.gradient-dark {
+        background: linear-gradient(
+          to right,
+          rgba($black, 0.7),
+          rgba($black, 0.3)
+        );
+      }
+
+      &.gradient-primary {
+        background: linear-gradient(
+          to right,
+          rgba($theme-primary, 0.7),
+          rgba($theme-primary, 0.3)
+        );
+      }
+    }
+  }
+}
+
+.gradient-hover,
+.anime-banner {
+  &:hover {
+    .gradient {
+      opacity: 0;
+    }
+  }
+}

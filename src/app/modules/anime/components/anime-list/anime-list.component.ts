@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { AnimeService } from '../../services/anime.service';
 import { Anime } from '../../models/anime.module';
 

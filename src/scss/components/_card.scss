@@ -17,30 +17,13 @@
   }
 }
 
-.anime-overview{
+.anime-overview {
   background-color: rgba($black-700, 1);
   padding: 8px 16px;
   border-radius: 14px;
-  overflow: hidden;
   display: inline-block;
-  
+
   > p {
     margin-bottom: 6px;
-  }
-}
-
-.smart-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  display: block;
-  padding: 0;
-  text-align: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-
-  &[mode="cover"] {
-    height: 100%;
   }
 }
