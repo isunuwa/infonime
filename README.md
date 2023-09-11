@@ -5,6 +5,7 @@ In the name itself this application gives the information of anime and made with
 ## Design
 
 Golshan Jimee: [GitHub](https://github.com/zniii)
+Figma URL: [Figma](https://www.figma.com/file/5gPto28bx0JYCCrStpBNHs/Anime-Website?type=design&node-id=222%3A14&mode=design&t=EXU4W8ESF94zrW2y-1)
 
 # Tech Stack
 

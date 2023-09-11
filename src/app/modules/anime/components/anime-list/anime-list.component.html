@@ -1,72 +1,80 @@
-<div class="random-anime" *ngIf="randomAnime">
-  <div class="row mb-5">
-    <div class="col-md-7">
-      <div class="img-wrapper">
-        <div
-          class="position-relative img-container img-rounded img-container-16-9"
-        >
-          <div
-            mode="cover"
-            class="smart-image"
-            [style.background-image]="
-              'url(' + randomAnime.images.webp.image_url + ')'
-            "
-          ></div>
-          <a
-            title="{{ randomAnime.title }}"
-            class="anime-link"
-            routerLink="anime/{{ randomAnime.mal_id }}"
-          ></a>
-          <div class="gradient linear-gradient to-right gradient-dark"></div>
+<div class="top-anime" *ngIf="topAnimes.length != 0">
+  <ngb-carousel
+    #carousel
+    [interval]="3000"
+    [pauseOnHover]="pauseOnHover"
+    [pauseOnFocus]="pauseOnFocus"
+    [showNavigationArrows]="showNavigationArrows"
+  >
+    <ng-template ngbSlide *ngFor="let anime of topAnimes; index as i">
+      <div class="row mb-5">
+        <div class="col-md-7">
+          <div class="img-wrapper">
+            <div
+              class="position-relative img-container img-rounded img-container-16-9"
+            >
+              <div
+                mode="cover"
+                class="smart-image"
+                [style.background-image]="
+                  'url(' + anime.images.webp.image_url + ')'
+                "
+              ></div>
+              <a
+                title="{{ anime.title }}"
+                class="anime-link"
+                routerLink="anime/{{ anime.mal_id }}"
+              ></a>
+              <div
+                class="gradient linear-gradient to-right gradient-dark"
+              ></div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="col-md-5">
-      <div class="d-flex align-items-end h-100">
-        <div class="card-body">
-          <h5 class="card-title display-6 fw-bold mb-2">
-            {{ randomAnime.title }}
-          </h5>
-          <p class="small card-text line-clamp mb-2">
-            {{ randomAnime.synopsis }}
-          </p>
-          <div class="small anime-overview">
-            <ng-container *ngIf="randomAnime.score ?? ''">
-              <p>
-                Score:
-                {{ randomAnime.score }} by {{ randomAnime.scored_by }}
+        <div class="col-md-5">
+          <div class="d-flex align-items-end h-100">
+            <div class="card-body">
+              <h5 class="card-title display-6 fw-bold mb-2">
+                {{ anime.title }}
+              </h5>
+              <p class="small card-text line-clamp mb-2">
+                {{ anime.synopsis }}
               </p>
-            </ng-container>
-            <p *ngIf="randomAnime.status ?? ''">
-              Status: {{ randomAnime.status }}
-            </p>
-            <p *ngIf="randomAnime.episodes ?? ''">
-              Episodes: {{ randomAnime.episodes }}
-            </p>
-            <p *ngIf="randomAnime.type ?? ''">Type: {{ randomAnime.type }}</p>
-            <p *ngIf="randomAnime.rating ?? ''">
-              Rating: {{ randomAnime.rating }}
-            </p>
-            <p *ngIf="randomAnime.studios ?? ''">
-              Studios:
-              <span
-                class="small py-1 px-2 bg-secondary me-2"
-                *ngFor="let studio of randomAnime.studios"
-              >
-                {{ studio.name }}
-              </span>
-            </p>
-            <p class="m-0" *ngIf="randomAnime.genres ?? ''">
-              Genres:
-              <span class="small me-2" *ngFor="let genre of randomAnime.genres">
-                {{ genre.name }}
-              </span>
-            </p>
+              <div class="small anime-overview">
+                <ng-container *ngIf="anime.score ?? ''">
+                  <p>
+                    Score:
+                    {{ anime.score }} by {{ anime.scored_by }}
+                  </p>
+                </ng-container>
+                <p *ngIf="anime.status ?? ''">Status: {{ anime.status }}</p>
+                <p *ngIf="anime.episodes ?? ''">
+                  Episodes: {{ anime.episodes }}
+                </p>
+                <p *ngIf="anime.type ?? ''">Type: {{ anime.type }}</p>
+                <p *ngIf="anime.rating ?? ''">Rating: {{ anime.rating }}</p>
+                <p *ngIf="anime.studios ?? ''">
+                  Studios:
+                  <span
+                    class="small py-1 px-2 bg-secondary me-2"
+                    *ngFor="let studio of anime.studios"
+                  >
+                    {{ studio.name }}
+                  </span>
+                </p>
+                <p class="m-0" *ngIf="anime.genres ?? ''">
+                  Genres:
+                  <span class="small me-2" *ngFor="let genre of anime.genres">
+                    {{ genre.name }}
+                  </span>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
+    </ng-template>
+  </ngb-carousel>
 </div>
 
 <div class="row">
@@ -74,35 +82,51 @@
     <div class="title-wrapper mb-3">
       <h2 class="fw-medium h4">Top Rating Anime</h2>
     </div>
-    <div class="d-flex flex-column" *ngIf="topAnimes">
-      <div class="col-12" *ngFor="let anime of topAnimes">
-        <div class="img-wrapper">
-          <div
-            class="position-relative img-container img-rounded img-container-6-9"
-          >
-            <div
-              mode="cover"
-              class="smart-image"
-              [style.background-image]="
-                'url(' + anime.images.webp.image_url + ')'
-              "
-            ></div>
-            <a
-              title="{{ anime.title }}"
-              class="anime-link"
-              routerLink="anime/{{ anime.mal_id }}"
-            ></a>
-            <div class="gradient full-gradient"></div>
+    <div class="row g-4" *ngIf="topAnimes.length != 0">
+      <div class="col-12" *ngFor="let anime of topAnimes; index as item">
+        <div class="row">
+          <div class="col-1">
+            <span class="h3"> {{ item + 1 }}. </span>
           </div>
-        </div>
-        <div class="anime-details mt-2">
-          <p class="h4 mb-2 fw-semibold">{{ anime.title }}</p>
-          <p>
-            Episodes: <span class="">{{ anime.episodes }}</span>
-          </p>
-          <p>
-            Score <span class="">{{ anime.score }}</span>
-          </p>
+          <div class="col-4">
+            <div class="img-wrapper">
+              <div
+                class="position-relative img-container img-rounded img-container-6-9"
+              >
+                <div
+                  mode="cover"
+                  class="smart-image"
+                  [style.background-image]="
+                    'url(' + anime.images.webp.image_url + ')'
+                  "
+                ></div>
+                <a
+                  title="{{ anime.title }}"
+                  class="anime-link"
+                  routerLink="anime/{{ anime.mal_id }}"
+                ></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-7">
+            <div class="anime-details mt-2">
+              <p class="h5 mb-2 fw-semibold">{{ anime.title }}</p>
+              <div class="small">
+                <p class="m-0">
+                  Score: <span class="">{{ anime.score }}</span>
+                </p>
+                <p class="m-0">
+                  Status: <span class="">{{ anime.status }}</span>
+                </p>
+                <p class="m-0">
+                  Episodes: <span class="">{{ anime.score }}</span>
+                </p>
+                <p class="m-0">
+                  Type: <span class="">{{ anime.type }}</span>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -111,8 +135,8 @@
     <div class="title-wrapper mb-3">
       <h2 class="fw-medium h4">Currently Airing</h2>
     </div>
-    <div class="row" *ngIf="animes">
-      <div class="col-md-3" *ngFor="let anime of animes">
+    <div class="row" *ngIf="airingAnimes.length != 0">
+      <div class="col-md-3" *ngFor="let anime of airingAnimes">
         <div class="img-wrapper">
           <div
             class="position-relative img-container img-rounded img-container-6-9"
@@ -133,16 +157,18 @@
           </div>
         </div>
         <div class="anime-details mt-2">
-          <p class="h4 mb-2 fw-semibold">{{ anime.title }}</p>
-          <p>
-            Episodes: <span class="">{{ anime.episodes }}</span>
-          </p>
-          <p>
-            Type <span class="">{{ anime.airing }}</span>
-          </p>
-          <p>
-            Score <span class="">{{ anime.score }}</span>
-          </p>
+          <p class="h5 mb-2 fw-semibold">{{ anime.title }}</p>
+          <div class="small">
+            <p class="m-0">
+              Score: <span class="">{{ anime.score }}</span>
+            </p>
+            <p class="m-0">
+              Episodes: <span class="">{{ anime.score }}</span>
+            </p>
+            <p class="m-0">
+              Type: <span class="">{{ anime.type }}</span>
+            </p>
+          </div>
         </div>
       </div>
     </div>
