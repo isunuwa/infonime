@@ -8,23 +8,39 @@ import { Anime } from '../../models/anime.module';
   templateUrl: './anime-list.component.html',
 })
 export class AnimeListComponent implements OnInit {
+  // data
   animes: Anime[] = [];
+  airingAnimes: Anime[] = [];
   topAnimes: Anime[] = [];
   randomAnime!: Anime;
+  recommendedAnimes: Anime[] = [];
+
+  // carousel variables
+  paused = false;
+  unpauseOnArrow = false;
+  pauseOnIndicator = false;
+  pauseOnHover = true;
+  pauseOnFocus = true;
+  showNavigationArrows = false;
 
   constructor(private animeService: AnimeService) {}
 
   ngOnInit(): void {
-    // this.getAnimes();
-    this.getRandomAnime();
-    // this.getTopAnimes();
+    this.getAiringAnimes();
+    this.getTopAnimes();
   }
 
   getAnimes(): void {
     this.animeService.getAnimeList().subscribe((response) => {
-      console.log(response.data);
-
       this.animes = response.data;
+    });
+  }
+
+  getAiringAnimes(): void {
+    this.animeService.getAiringAnimeList().subscribe((response) => {
+      console.log(response.data);
+      
+      this.airingAnimes = response.data;
     });
   }
 

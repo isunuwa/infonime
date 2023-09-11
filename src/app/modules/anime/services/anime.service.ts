@@ -10,16 +10,25 @@ export class AnimeService {
   constructor(private httpClient: HttpClient) {}
 
   getAnimeList(): Observable<any> {
-    // let parameters = { sfw: false };
-    // let queryParams = new HttpParams({ fromObject: parameters });
-
     return this.httpClient.get<any>(`${environment.JIKAN_API_URl}/anime`);
   }
 
+  getAiringAnimeList(): Observable<any> {
+    let parameters = { limit: 4, status: 'airing', min_score: 8 };
+    let queryParams = new HttpParams({ fromObject: parameters });
+
+    return this.httpClient.get<any>(`${environment.JIKAN_API_URl}/anime`, {
+      params: queryParams,
+    });
+  }
+
   getTopAnimeList(): Observable<any> {
-    return this.httpClient.get<any>(
-      `${environment.JIKAN_API_URl}/top/anime?limit=5`
-    );
+    let parameters = { limit: 5, filter: 'airing' };
+    let queryParams = new HttpParams({ fromObject: parameters });
+
+    return this.httpClient.get<any>(`${environment.JIKAN_API_URl}/top/anime`, {
+      params: queryParams,
+    });
   }
 
   getRandomAnime(): Observable<any> {
