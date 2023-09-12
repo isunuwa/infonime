@@ -7,3 +7,16 @@
   height: 100%;
   z-index: 1;
 }
+
+.btn-theme-dark {
+  --bs-btn-font-size: #{$fs-sm};
+  --bs-btn-color: #{$gray-400};
+  --bs-btn-bg: #{$black-700};
+  --bs-btn-border-color: #{$black-700};
+  --bs-btn-hover-bg: #{$theme-primary-dark};
+  --bs-btn-hover-border-color: #{$theme-primary-dark};
+  --bs-btn-focus-shadow-rgb: blue;
+  --bs-btn-active-color: #{$white};
+  --bs-btn-active-bg: #{$theme-primary-dark};
+  --bs-btn-active-border-color: #{$theme-primary-dark};
+}
