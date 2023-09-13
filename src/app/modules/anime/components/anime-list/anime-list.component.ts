@@ -38,16 +38,12 @@ export class AnimeListComponent implements OnInit {
 
   getAiringAnimes(): void {
     this.animeService.getAiringAnimeList().subscribe((response) => {
-      console.log(response.data);
-      
       this.airingAnimes = response.data;
     });
   }
 
   getTopAnimes(): void {
     this.animeService.getTopAnimeList().subscribe((response) => {
-      console.log(response.data);
-
       this.topAnimes = response.data;
     });
   }

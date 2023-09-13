@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { AnimeService } from '../../services/anime.service';
 import { Anime } from '../../models/anime.module';
+import { Character } from '../../models/character.module';
 
 @Component({
   selector: 'app-anime-detail',
@@ -10,6 +11,7 @@ import { Anime } from '../../models/anime.module';
 })
 export class AnimeDetailComponent implements OnInit {
   anime!: Anime;
+  animeCharacters!: Character[];
 
   constructor(
     private animeService: AnimeService,
@@ -18,17 +20,22 @@ export class AnimeDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAnimeDetail();
+    this.getAnimeCharacters();
   }
 
   getAnimeDetail(): void {
     const id = +this.route.snapshot.params['id'];
 
     this.animeService.getAnimeDetail(id).subscribe((response) => {
-      console.log(response.data);
-
       this.anime = response.data;
     });
+  }
 
-    // this.animeService.getAnime(id).subscribe((anime) => (this.anime = anime));
+  getAnimeCharacters(): void {
+    const id = +this.route.snapshot.params['id'];
+
+    this.animeService.getAnimeCharacters(id).subscribe((response) => {
+      this.animeCharacters = response.data;
+    });
   }
 }
