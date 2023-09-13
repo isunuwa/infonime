@@ -5,10 +5,14 @@
   top: 0;
   width: 100%;
   z-index: 0;
-  @include css3-prefix(transition, opacity 0.3s ease);
+  @include css3-prefix(transition, background 0.3s ease);
 
   &.full-gradient {
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba($black, 0.4);
+
+    &.dark {
+      background: rgba($black, 0.7);
+    }
   }
 
   &.linear-gradient {
@@ -28,6 +32,34 @@
           rgba($theme-primary, 0.3)
         );
       }
+    }
+  }
+}
+
+.img-container {
+  &:hover {
+    .full-gradient {
+      background: transparent;
+    }
+  }
+
+  &.reverse-gradient {
+    &:hover {
+      .full-gradient {
+        background: rgba($black, 0.4);
+
+        &.dark {
+          background: rgba($black, 0.7);
+        }
+      }
+
+      .img-container-text {
+        opacity: 1;
+      }
+    }
+
+    .full-gradient {
+      background: transparent;
     }
   }
 }

@@ -41,4 +41,9 @@ export class AnimeService {
     let url = `${environment.JIKAN_API_URl}/anime/${id}`;
     return this.httpClient.get<any>(url).pipe();
   }
+
+  getAnimeCharacters(id: number): Observable<any> {
+    let url = `${environment.JIKAN_API_URl}/anime/${id}/characters`;
+    return this.httpClient.get<any>(url);
+  }
 }
