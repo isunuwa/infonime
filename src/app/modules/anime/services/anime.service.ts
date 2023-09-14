@@ -9,8 +9,13 @@ import { environment } from 'src/environments/environment.development';
 export class AnimeService {
   constructor(private httpClient: HttpClient) {}
 
-  getAnimeList(): Observable<any> {
-    return this.httpClient.get<any>(`${environment.JIKAN_API_URl}/anime`);
+  getAnimeList(query: any): Observable<any> {
+    let parameters = { q: query, limit: 5 };
+    let queryParams = new HttpParams({ fromObject: parameters });
+
+    return this.httpClient.get<any>(`${environment.JIKAN_API_URl}/anime`, {
+      params: queryParams,
+    });
   }
 
   getAiringAnimeList(): Observable<any> {
