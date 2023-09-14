@@ -19,9 +19,12 @@ export class HeaderComponent implements OnInit {
   // data
   searchAnimes: Anime[] = [];
 
+  searchSubject = new Subject<string>();
   toggleSearchBarStatus: boolean = false;
   enteredSearchValue: string = '';
   searchText!: string;
+
+  @ViewChild('searchInput') searchInput!: ElementRef;
 
   constructor(private animeService: AnimeService) {
     this.searchSubject
@@ -31,29 +34,27 @@ export class HeaderComponent implements OnInit {
         switchMap((query) => this.animeService.getAnimeList(query))
       )
       .subscribe((response) => {
-        console.log(response.data);
         this.searchAnimes = response.data;
       });
   }
 
   ngOnInit(): void {}
 
-  // ========= search section start =========
-  private searchSubject = new Subject<string>();
-
-  onSearch(query: string): any {
-    this.searchSubject.next(query.trim());
-    console.log(query);
-  }
-
-  getSearchAnimes(query: string): any {
-    let parameters = { q: query, limit: 10 };
-    let queryParams = new HttpParams({ fromObject: parameters });
-
-    this.animeService.getAnimeList(queryParams);
+  onSearch(event: any): any {
+    const query = event.target.value;
+    if (query.length > 0) {
+      this.searchSubject.next(query);
+    }
   }
 
   toggleSearchBar(): void {
     this.toggleSearchBarStatus = !this.toggleSearchBarStatus;
+    if (this.toggleSearchBarStatus) {
+      setTimeout(() => {
+        this.searchInput.nativeElement.focus();
+      }, 400);
+    } else {
+      this.searchInput.nativeElement.value = '';
+    }
   }
 }

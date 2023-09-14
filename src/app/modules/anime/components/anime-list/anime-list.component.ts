@@ -27,7 +27,7 @@ export class AnimeListComponent implements OnInit {
 
   ngOnInit(): void {
     // this.getAiringAnimes();
-    // this.getTopAnimes();
+    this.getTopAnimes();
   }
 
   getAnimes(): void {

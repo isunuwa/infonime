@@ -10,8 +10,11 @@ export class AnimeService {
   constructor(private httpClient: HttpClient) {}
 
   getAnimeList(query: any): Observable<any> {
+    let parameters = { q: query, limit: 5 };
+    let queryParams = new HttpParams({ fromObject: parameters });
+
     return this.httpClient.get<any>(`${environment.JIKAN_API_URl}/anime`, {
-      params: query,
+      params: queryParams,
     });
   }
 

@@ -61,7 +61,7 @@
               class="js-search-input"
               placeholder="eg. Grand Blue"
               #searchInput
-              (keypress)="onSearch(searchInput.value)"
+              (keyup)="onSearch($event)"
             />
             <button type="button" class="anm-search-submit" title="Search">
               <img src="assets/icons/search.svg" alt="Search" />
@@ -80,11 +80,14 @@
     </div>
   </div>
   <!--  -->
-  <div class="search-box-autocomplete active">
-    <div class="centered-content">
+  <div
+    class="search-box-autocomplete"
+    [ngClass]="toggleSearchBarStatus ? 'active' : ''"
+  >
+    <div class="centered-content" *ngIf="searchAnimes.length > 0">
       <ul class="search-autocomplete-list row m-0 p-0">
         <li
-          class="autocomplete-item col-md-2 col-sm-4"
+          class="autocomplete-item col-md-1 col-sm-3"
           *ngFor="let anime of searchAnimes"
         >
           <div class="item-content">
@@ -106,7 +109,7 @@
                 ></a>
               </div>
             </div>
-            <span>{{ anime.title }}</span>
+            <span class="line-clamp title">{{ anime.title }}</span>
           </div>
         </li>
       </ul>

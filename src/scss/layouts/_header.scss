@@ -6,12 +6,11 @@
 .anm-navbar-primary {
   padding: 20px 0;
   left: 0;
-  position: sticky;
+  position: fixed;
   top: 0;
   width: 100%;
-  z-index: 100;
+  z-index: 50;
   background-color: $black-700;
-  height: 100%;
 }
 
 .navbar {
@@ -41,7 +40,6 @@
 .anm-nav-search {
   position: absolute;
   top: 0;
-  height: 100%;
   width: 100%;
   overflow: hidden;
 
@@ -60,9 +58,10 @@
   }
 
   &.active {
+    z-index: 56;
+
     .anm-search-container {
       transform: translateX(0);
-      opacity: 1;
     }
   }
 }
@@ -78,19 +77,17 @@
   z-index: 100;
   background-color: $black-800;
   transform: translateX(101%);
-  // opacity: 0;
-  @include css3-prefix(transition, all 0.4s ease-in-out);
+  @include css3-prefix(transition, transform 0.4s ease-in-out);
 }
 
 .search-box-autocomplete {
   top: 65px;
   position: absolute;
-  background: gray;
+  background: $black-800;
   border: none;
-  display: none;
   width: 100%;
   z-index: 99;
-  visibility: hidden;
+  display: none;
 
   &.active {
     display: block;
@@ -104,11 +101,7 @@
   line-height: 1.2em;
   list-style: none;
 
-  &:first-child {
-    padding-top: 10px;
-  }
-
-  &:not(:first-child) {
-    border-top: 1px solid red;
+  .title {
+    font-size: $fs-sm;
   }
 }
