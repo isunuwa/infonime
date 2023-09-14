@@ -1,42 +1,121 @@
-<div class="inf-nav-primary">
-  <div class="centered-content">
-    <nav class="navbar navbar-expand-lg container-edge">
-      <div class="container-fluid">
-        <a routerLink="/">
-          <img src="assets/icons/logo.svg" alt="logo" />
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarTogglerDemo02"
-          aria-controls="navbarTogglerDemo02"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <form class="d-flex" role="search">
-          <input
-            class="form-control search"
-            type="search"
-            placeholder="Search"
-            aria-label="Search"
-          />
-        </form>
-        <div id="navbarTogglerDemo02">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" routerLink="login" aria-current="page"
-                >Login</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLink="register">Sign Up</a>
-            </li>
-          </ul>
+<header class="anm-header">
+  <nav class="anm-navbar-primary">
+    <div class="centered-content">
+      <div class="navbar navbar-expand-lg container-edge p-0">
+        <div class="container-fluid">
+          <a routerLink="/">
+            <img src="assets/icons/logo.svg" alt="logo" />
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div id="navbarTogglerDemo02">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <button
+                  type="button"
+                  class="anm-search-submit"
+                  title="Close"
+                  (click)="toggleSearchBar()"
+                >
+                  <img
+                    src="assets/icons/search.svg"
+                    alt="search icon"
+                    type="button"
+                    title="search"
+                  />
+                </button>
+              </li>
+              <!-- <li class="nav-item">
+                <a class="nav-link" routerLink="login" aria-current="page"
+                  >Login</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="register">Sign Up</a>
+              </li> -->
+            </ul>
+          </div>
         </div>
       </div>
-    </nav>
+    </div>
+  </nav>
+  <!-- search form -->
+  <div class="anm-nav-search" [ngClass]="toggleSearchBarStatus ? 'active' : ''">
+    <div class="anm-search-container">
+      <div class="centered-content">
+        <div class="container-fluid">
+          <div action="" class="anm-search-form d-flex">
+            <label for="anm-search-input" class="d-none">Search</label>
+            <input
+              type="text"
+              id="anm-search-input"
+              class="js-search-input"
+              placeholder="eg. Grand Blue"
+              #searchInput
+              (keypress)="onSearch(searchInput.value)"
+            />
+            <button type="button" class="anm-search-submit" title="Search">
+              <img src="assets/icons/search.svg" alt="Search" />
+            </button>
+            <button
+              type="button"
+              class="anm-search-submit"
+              title="Close"
+              (click)="toggleSearchBar()"
+            >
+              <img src="assets/icons/cross.svg" alt="Close" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+  <!--  -->
+  <div class="search-box-autocomplete active">
+    <div class="centered-content">
+      <ul class="search-autocomplete-list row m-0 p-0">
+        <li
+          class="autocomplete-item col-md-2 col-sm-4"
+          *ngFor="let anime of searchAnimes"
+        >
+          <div class="item-content">
+            <div class="img-wrapper">
+              <div
+                class="position-relative img-container img-rounded img-container-6-9"
+              >
+                <div
+                  mode="cover"
+                  class="smart-image"
+                  [style.background-image]="
+                    'url(' + anime.images.webp.image_url + ')'
+                  "
+                ></div>
+                <a
+                  title="{{ anime.title }}"
+                  class="anime-link"
+                  routerLink="anime/{{ anime.mal_id }}"
+                ></a>
+              </div>
+            </div>
+            <span>{{ anime.title }}</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!--  -->
+  <div
+    class="anm-overlay"
+    [ngClass]="toggleSearchBarStatus ? 'active' : ''"
+    (click)="toggleSearchBar()"
+  ></div>
+</header>
