@@ -26,28 +26,26 @@ export class AnimeListComponent implements OnInit {
   constructor(private animeService: AnimeService) {}
 
   ngOnInit(): void {
-    this.getAiringAnimes();
+    // this.getAiringAnimes();
     this.getTopAnimes();
   }
 
   getAnimes(): void {
-    this.animeService.getAnimeList().subscribe((response) => {
+    let queryParams = null;
+
+    this.animeService.getAnimeList(queryParams).subscribe((response) => {
       this.animes = response.data;
     });
   }
 
   getAiringAnimes(): void {
     this.animeService.getAiringAnimeList().subscribe((response) => {
-      console.log(response.data);
-      
       this.airingAnimes = response.data;
     });
   }
 
   getTopAnimes(): void {
     this.animeService.getTopAnimeList().subscribe((response) => {
-      console.log(response.data);
-
       this.topAnimes = response.data;
     });
   }
