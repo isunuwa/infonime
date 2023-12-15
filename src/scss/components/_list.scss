@@ -1,0 +1,23 @@
+.anm {
+  &-li {
+    $anmLi: &;
+    font-weight: $fw-bold;
+
+    &--title {
+      font-weight: $fw-light;
+      color: $theme-primary;
+    }
+  }
+}
+
+.list {
+  &-title {
+    &_space {
+      .anm-li--title {
+        min-width: 100px;
+        text-align: justify;
+        display: inline-block;
+      }
+    }
+  }
+}

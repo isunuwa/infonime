@@ -52,61 +52,150 @@
       tabindex="0"
     >
       <div class="row" *ngIf="anime">
-        <div class="col-12">
-          <p class="d-inline-block me-3">
-            Average Rating: <span class="text-theme">{{ anime.score }}</span>
-          </p>
-          <p class="d-inline-block me-3">
-            Rank: <span class="text-theme">{{ anime.rank }}</span>
-          </p>
-          <p class="d-inline-block me-3">
-            Popularity: <span class="text-theme">{{ anime.popularity }}</span>
-          </p>
-          <p class="d-inline-block me-3">
-            Followers: <span class="text-theme">{{ anime.popularity }}</span>
-          </p>
-        </div>
-        <div class="col-md-2">
-          <div class="position-relative">
-            <div class="img-container img-rounded img-container-6-9">
-              <div
-                mode="cover"
-                class="smart-image"
-                [style.background-image]="
-                  'url(' + anime.images.webp.image_url + ')'
-                "
-              ></div>
+        <div class="col-md-8">
+          <div class="row">
+            <div class="col-12">
+              <p class="d-inline-block me-3">
+                Average Rating:
+                <span class="text-theme">{{ anime.score }}</span>
+              </p>
+              <p class="d-inline-block me-3">
+                Rank: <span class="text-theme">{{ anime.rank }}</span>
+              </p>
+              <p class="d-inline-block me-3">
+                Popularity:
+                <span class="text-theme">{{ anime.popularity }}</span>
+              </p>
+              <p class="d-inline-block me-3">
+                Followers:
+                <span class="text-theme">{{ anime.popularity }}</span>
+              </p>
+            </div>
+            <div class="col-md-2">
+              <div class="position-relative">
+                <div class="img-container img-rounded img-container-6-9">
+                  <div
+                    mode="cover"
+                    class="smart-image"
+                    [style.background-image]="
+                      'url(' + anime.images.webp.image_url + ')'
+                    "
+                  ></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-10">
+              <div class="anime-details">
+                <p class="card-text line-clamp mb-4">
+                  {{ anime.synopsis }}
+                </p>
+                <div class="small anime-overview">
+                  <ng-container *ngIf="anime.score ?? ''">
+                    <p>
+                      Score:
+                      {{ anime.score }} by {{ anime.scored_by }}
+                    </p>
+                  </ng-container>
+                  <p *ngIf="anime.status ?? ''">Status: {{ anime.status }}</p>
+                  <p *ngIf="anime.episodes ?? ''">
+                    Episodes: {{ anime.episodes }}
+                  </p>
+                  <p *ngIf="anime.type ?? ''">Type: {{ anime.type }}</p>
+                  <p *ngIf="anime.rating ?? ''">Rating: {{ anime.rating }}</p>
+                  <p *ngIf="anime.studios ?? ''">
+                    Studios:
+                    <span class="me-2" *ngFor="let studio of anime.studios">
+                      {{ studio.name }}
+                    </span>
+                  </p>
+                  <p class="m-0" *ngIf="anime.genres ?? ''">
+                    Genres:
+                    <span class="me-2" *ngFor="let genre of anime.genres">
+                      {{ genre.name }}
+                    </span>
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-md-10">
-          <div class="anime-details">
-            <p class="card-text line-clamp mb-4">
-              {{ anime.synopsis }}
-            </p>
-            <div class="small anime-overview">
-              <ng-container *ngIf="anime.score ?? ''">
-                <p>
-                  Score:
-                  {{ anime.score }} by {{ anime.scored_by }}
-                </p>
-              </ng-container>
-              <p *ngIf="anime.status ?? ''">Status: {{ anime.status }}</p>
-              <p *ngIf="anime.episodes ?? ''">Episodes: {{ anime.episodes }}</p>
-              <p *ngIf="anime.type ?? ''">Type: {{ anime.type }}</p>
-              <p *ngIf="anime.rating ?? ''">Rating: {{ anime.rating }}</p>
-              <p *ngIf="anime.studios ?? ''">
-                Studios:
-                <span class="me-2" *ngFor="let studio of anime.studios">
-                  {{ studio.name }}
-                </span>
-              </p>
-              <p class="m-0" *ngIf="anime.genres ?? ''">
-                Genres:
-                <span class="me-2" *ngFor="let genre of anime.genres">
-                  {{ genre.name }}
-                </span>
-              </p>
+        <div class="col-md-4">
+          <div class="anm-card mb-4">
+            <div class="anm-card--header pb-0">
+              <p class="h4 card-header--title">Details</p>
+            </div>
+            <div class="anm-card--body">
+              <ul class="list-unstyled list-title_space mb-0">
+                <li>
+                  <span class="anm-li--title">Date</span> {{ anime.type }}
+                </li>
+                <li>
+                  <span class="anm-li--title">Episodes</span>
+                  {{ anime.episodes }}
+                </li>
+                <li>
+                  <span class="anm-li--title">Status</span> {{ anime.status }}
+                </li>
+                <li>
+                  <span class="anm-li--title">Aired On</span>
+                  {{ anime.aired.string }}
+                </li>
+                <li>
+                  <span class="anm-li--title">Broadcast</span>
+                  {{ anime.broadcast.string }}
+                </li>
+                <li>
+                  <span class="anm-li--title">Licensors</span>
+                  <ng-container *ngFor="let licensor of anime.licensors">
+                    {{ licensor.name }}
+                  </ng-container>
+                </li>
+                <li>
+                  <span class="anm-li--title">Source</span> {{ anime.source }}
+                </li>
+                <li>
+                  <span class="anm-li--title">Demographic</span>
+                  <ng-container *ngFor="let demographic of anime.demographics">
+                    {{ demographic.name }}
+                  </ng-container>
+                </li>
+                <li>
+                  <span class="anm-li--title">Production</span>
+                  <ng-container *ngFor="let producers of anime.producers">
+                    {{ producers.name }},
+                  </ng-container>
+                </li>
+                <li>
+                  <span class="anm-li--title">Duration</span>
+                  {{ anime.duration }}
+                </li>
+                <li>
+                  <span class="anm-li--title">Rating</span> {{ anime.rating }}
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="anm-card">
+            <div class="anm-card--header pb-0">
+              <p class="h4 card-header--title">Statistics</p>
+            </div>
+            <div class="anm-card--body">
+              <ul class="list-unstyled list-title_space mb-0">
+                <li>
+                  <span class="anm-li--title">Score</span> {{ anime.score }}
+                </li>
+                <li>
+                  <span class="anm-li--title">Ranked</span> {{ anime.rank }}
+                </li>
+                <li>
+                  <span class="anm-li--title">Popularity</span>
+                  {{ anime.popularity }}
+                </li>
+                <li>
+                  <span class="anm-li--title">Watchers</span>
+                  {{ anime.favorites }}
+                </li>
+              </ul>
             </div>
           </div>
         </div>
