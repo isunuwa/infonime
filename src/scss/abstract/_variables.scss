@@ -1,9 +1,9 @@
 /* Natural colors */
 $white: #ffffff;
 
+$black: #000000;
 $black-700: #2c2b2d;
 $black-800: #1e1b1b;
-$black: #000000;
 
 $blue: #00b5fe;
 $yellow: #ffc357;
@@ -32,6 +32,20 @@ $green-700: #436f00;
 $green-800: #2c5000;
 $green-900: #193100;
 
+$primary-100: #c5dae7;
+$primary-200: #a9c9db;
+$primary-300: #82b0ca;
+$primary-400: #69a1c0;
+$primary-500: #4489b0;
+$primary-600: #3e7da0;
+$primary-700: #30617d;
+$primary-800: #254b61;
+$primary-900: #1d3a4a;
+
 // theme colors
-$theme-primary: #42c566;
-$theme-primary-dark: #36864D;
+$theme-primary: $primary-500;
+$theme-primary-dark: $primary-700;
+
+$br-sm: 4px;
+$br-normal: 8px;
+$br-md: 12px;

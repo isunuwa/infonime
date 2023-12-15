@@ -15,3 +15,19 @@
     margin-bottom: 6px;
   }
 }
+
+.anm-card{
+
+  &--header, &--body{
+    padding: 10px 16px;
+  }
+  
+  &--header{
+    
+  }
+
+  &--body{
+    background-color: $black-800;
+    border-radius: $br-normal;
+  }
+}
