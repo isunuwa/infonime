@@ -9,11 +9,11 @@ import { Anime } from '../../models/anime.module';
 })
 export class AnimeListComponent implements OnInit {
   // data
-  animes: Anime[] = [];
-  airingAnimes: Anime[] = [];
-  topAnimes: Anime[] = [];
+  anime: Anime[] = [];
+  airingAnime: Anime[] = [];
+  topAnime: Anime[] = [];
   randomAnime!: Anime;
-  recommendedAnimes: Anime[] = [];
+  recommendedAnime: Anime[] = [];
 
   // carousel variables
   paused = false;
@@ -26,27 +26,27 @@ export class AnimeListComponent implements OnInit {
   constructor(private animeService: AnimeService) {}
 
   ngOnInit(): void {
-    this.getAiringAnimes();
-    this.getTopAnimes();
+    this.getAiringAnime();
+    this.getTopAnime();
   }
 
-  getAnimes(): void {
+  getAnime(): void {
     let queryParams = null;
 
     this.animeService.getAnimeList(queryParams).subscribe((response) => {
-      this.animes = response.data;
+      this.anime = response.data;
     });
   }
 
-  getAiringAnimes(): void {
+  getAiringAnime(): void {
     this.animeService.getAiringAnimeList().subscribe((response) => {
-      this.airingAnimes = response.data;
+      this.airingAnime = response.data;
     });
   }
 
-  getTopAnimes(): void {
+  getTopAnime(): void {
     this.animeService.getTopAnimeList().subscribe((response) => {
-      this.topAnimes = response.data;
+      this.topAnime = response.data;
     });
   }
 

@@ -16,18 +16,39 @@
   }
 }
 
-.anm-card{
-
-  &--header, &--body{
-    padding: 10px 16px;
-  }
-  
-  &--header{
-    
+.anm {
+  &-title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
   }
 
-  &--body{
-    background-color: $black-800;
-    border-radius: $br-normal;
+  // card styles
+  &-card {
+    &--header,
+    &--body {
+      padding: 10px 16px;
+    }
+
+    &--body {
+      background-color: $black-800;
+      border-radius: $br-normal;
+    }
+  }
+
+  // card description
+  &-detail {
+    &-title {
+      color: $primary-500;
+      font-size: $fs-lg;
+      font-weight: $fw-medium;
+      margin-bottom: 2px;
+    }
+
+    &-type {
+      color: $primary-200;
+      display: inline-block;
+      min-width: 70px;
+    }
   }
 }
