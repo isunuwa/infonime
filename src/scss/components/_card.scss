@@ -1,18 +1,22 @@
-.line-clamp {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
+.line {
+  &-clamp {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+  }
 }
 
-.anime-overview {
-  background-color: rgba($black-700, 1);
-  padding: 8px 16px;
-  border-radius: 14px;
-  display: inline-block;
+.anime {
+  &-overview {
+    background-color: rgba($black-700, 1);
+    padding: 8px 16px;
+    border-radius: 14px;
+    display: inline-block;
 
-  > p {
-    margin-bottom: 6px;
+    > p {
+      margin-bottom: 6px;
+    }
   }
 }
 
