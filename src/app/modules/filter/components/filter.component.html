@@ -1,72 +1,95 @@
 <div class="block_area">
-  <div class="block_area-content row">
-    <div class="sidebar-filter col-md-9">
-      <div class="row g-2">
-        <div class="col-md-3" *ngFor="let item of [].constructor(8)">
-          <div class="item btn btn-sm btn-filter">
-            Genre
-            <span
-              ><span id="filter-genre-selected">All</span
-              ><i class="fas fa-angle-down ml-1"></i
-            ></span>
+  <form [formGroup]="filterForm" (ngSubmit)="onFilterSubmit()">
+    <div class="block_area-content row">
+      <div class="sidebar-filter col-md-9">
+        <div class="row g-2">
+          <div class="col-md-4">
+            <select
+              class="item item-filter form-control"
+              id="type"
+              formControlName="type"
+            >
+              <option value="">Type</option>
+              <option *ngFor="let item of type" [value]="item.value">
+                {{ item.name }}
+              </option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <select
+              class="item item-filter form-control"
+              id="rating"
+              formControlName="rating"
+            >
+              <option value="">Rating</option>
+              <option *ngFor="let item of rating" [value]="item.value">
+                {{ item.name }}
+              </option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <select
+              class="item item-filter form-control"
+              id="status"
+              formControlName="status"
+            >
+              <option value="">Status</option>
+              <option *ngFor="let item of status" [value]="item.value">
+                {{ item.name }}
+              </option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <select
+              class="item item-filter form-control"
+              id="order"
+              formControlName="order"
+            >
+              <option value="">Order By</option>
+              <option *ngFor="let item of order" [value]="item.value">
+                {{ item.name }}
+              </option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <select
+              class="item item-filter form-control"
+              id="sort"
+              formControlName="sort"
+            >
+              <option value="">Sort By</option>
+              <option *ngFor="let item of sort" [value]="item.value">
+                {{ item.name }}
+              </option>
+            </select>
           </div>
         </div>
       </div>
-      <div class="clearfix"></div>
-    </div>
-    <div class="filter-bottom col-md-3">
-      <div id="sidebar-search">
-        <div class="search-content">
-          <input
-            type="text"
-            class="form-control search-input"
-            value=""
-            name="filter-keyword"
-            placeholder="Search..."
-          />
+      <div class="filter-bottom col-md-3">
+        <div id="sidebar-search">
+          <div class="search-content">
+            <input
+              type="text"
+              class="form-control search-input"
+              value=""
+              name="filter-keyword"
+              placeholder="Search..."
+            />
+          </div>
         </div>
+        <button class="btn btn-dark w-100 mt-2" type="submit">
+          <i class="fas fa-filter mr-1"></i>Filter
+        </button>
       </div>
-      <button class="btn btn-dark w-100 mt-2">
-        <i class="fas fa-filter mr-1"></i>Filter
-      </button>
     </div>
-  </div>
+  </form>
 </div>
 
 <div class="block_area">
   <div class="block_area-content">
     <div class="row g-4">
-      <div class="col-3" *ngFor="let item of [].constructor(6)">
-        <div class="img-wrapper">
-          <div class="position-relative img-container img-rounded img-container-6-9">
-            <div
-              mode="cover"
-              class="smart-image"
-              [style.background-image]="'url(' + + ')'"
-            ></div>
-            <a
-              title="12345"
-              class="anime-link"
-              routerLink="anime/12345"
-            ></a>
-            <div class="gradient full-gradient"></div>
-          </div>
-        </div>
-        <div class="anm-detail mt-2">
-          <p class="anm-detail-title">12345</p>
-          <div class="small">
-            <p class="m-0">
-              <span class="anm-detail-type">Score.</span> <span class="">12345</span>
-            </p>
-            <p class="m-0">
-              <span class="anm-detail-type">Episodes.</span> <span class="">12345</span>
-            </p>
-            <p class="m-0">
-              <span class="anm-detail-type">Type.</span> <span class="">12345</span>
-            </p>
-          </div>
-        </div>
-        
+      <div class="col-2" *ngFor="let anime of anime">
+        <app-anime-item [anime]="anime"></app-anime-item>
       </div>
     </div>
   </div>

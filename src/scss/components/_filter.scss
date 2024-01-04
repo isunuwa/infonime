@@ -18,7 +18,9 @@
       width: 100%;
       padding: 6px 12px;
       line-height: 1.5rem;
-      
+      font-size: $fs-sm;
+      @include css3-prefix(transition, background-color 0.3s ease);
+
       &:hover {
         background-color: $black;
       }

@@ -10,6 +10,6 @@ import { AnimeItemComponent } from './components/anime-item/anime-item.component
 @NgModule({
   declarations: [AnimeListComponent, AnimeDetailComponent, AnimeItemComponent],
   imports: [CommonModule, AnimeRoutingModule, NgbCarouselModule],
-  exports: [AnimeListComponent, AnimeDetailComponent],
+  exports: [AnimeListComponent, AnimeDetailComponent, AnimeItemComponent],
 })
 export class AnimeModule {}
