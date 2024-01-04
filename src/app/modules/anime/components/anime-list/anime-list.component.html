@@ -79,59 +79,16 @@
 
 <div class="row">
   <div class="col-md-3">
-    <div class="title-wrapper mb-3">
-      <h2 class="fw-medium h4">Top Rating Anime</h2>
-    </div>
-    <div class="row g-4" *ngIf="topAnime.length != 0">
-      <div class="col-12" *ngFor="let anime of topAnime; index as item">
-        <div class="row">
-          <div class="col-1">
-            <span class="h3"> {{ item + 1 }}. </span>
-          </div>
-          <div class="col-4">
-            <div class="img-wrapper">
-              <div
-                class="position-relative img-container img-rounded img-container-6-9"
-              >
-                <div
-                  mode="cover"
-                  class="smart-image"
-                  [style.background-image]="
-                    'url(' + anime.images.webp.image_url + ')'
-                  "
-                ></div>
-                <a
-                  title="{{ anime.title }}"
-                  class="anime-link"
-                  routerLink="anime/{{ anime.mal_id }}"
-                ></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-7">
-            <div class="anm-detail mt-2">
-              <p class="anm-detail-title">{{ anime.title }}</p>
-              <div class="small">
-                <p class="m-0">
-                  <span class="anm-detail-type">Score.</span>
-                  <span class="">{{ anime.score }}</span>
-                </p>
-                <p class="m-0">
-                  <span class="anm-detail-type">Status.</span>
-                  <span class="">{{ anime.status }}</span>
-                </p>
-                <p class="m-0">
-                  <span class="anm-detail-type">Episodes.</span>
-                  <span class="">{{ anime.score }}</span>
-                </p>
-                <p class="m-0">
-                  <span class="anm-detail-type">Type.</span>
-                  <span class="">{{ anime.type }}</span>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="anm anm-v2">
+      <div class="anm-title">
+        <h2 class="fw-medium h4">Top Rating Anime</h2>
+      </div>
+      <div class="anm-row" *ngIf="topAnime.length != 0">
+        <app-anime-item
+          class="anm-col has-count"
+          *ngFor="let anime of topAnime; index as item"
+          [anime]="anime"
+        ></app-anime-item>
       </div>
     </div>
   </div>
@@ -146,9 +103,11 @@
         <!-- <div class="anm-pagination"></div> -->
       </div>
       <div class="row" *ngIf="airingAnime.length != 0">
-        <div class="col-md-3" *ngFor="let anime of airingAnime">
-          <app-anime-item [anime]="anime"></app-anime-item>
-        </div>
+        <app-anime-item
+          class="col-md-3"
+          *ngFor="let anime of airingAnime"
+          [anime]="anime"
+        ></app-anime-item>
       </div>
     </div>
   </div>

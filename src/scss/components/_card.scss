@@ -20,11 +20,77 @@
   }
 }
 
+// card
 .anm {
+  $anm: "anm";
+
+  &.#{$anm}-v2 {
+    .#{$anm}-row,
+    .#{$anm}-col {
+      display: flex;
+      gap: 1rem;
+    }
+    .#{$anm}-row {
+      flex-direction: column;
+      counter-reset: animeCount;
+    }
+
+    .#{$anm}-col {
+      $anmCol: &;
+      flex-direction: row;
+      position: relative;
+
+      &::before {
+        counter-increment: animeCount;
+        content: counter(animeCount) ".";
+        position: absolute;
+        color: $white;
+        z-index: 1;
+        font-size: 2rem;
+        font-weight: $fw-medium;
+      }
+
+      &:nth-child(1) {
+        &::before {
+          color: $blue;
+        }
+      }
+      &:nth-child(2) {
+        &::before {
+          color: $green;
+        }
+      }
+      &:nth-child(3) {
+        &::before {
+          color: $yellow;
+        }
+      }
+      
+      &.has {
+        &-count {
+          .img-wrapper {
+            padding-left: 32px;
+          }
+        }
+      }
+    }
+
+
+    .img-wrapper {
+      flex: 1 1 40%;
+    }
+
+    .anm-detail {
+      flex: 1 1 60%;
+      margin-top: 0;
+      line-height: 24px;
+    }
+  }
+
+  // card inner starts here
   &-title {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 1rem;
   }
 
   // card styles
@@ -42,6 +108,8 @@
 
   // card description
   &-detail {
+    margin-top: 0.75rem;
+
     &-title {
       font-size: $fs-lg;
       font-weight: $fw-medium;
