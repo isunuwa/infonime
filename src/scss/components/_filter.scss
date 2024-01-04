@@ -1,0 +1,29 @@
+.block {
+  &_area {
+    display: block;
+    margin-bottom: 30px;
+    background: $black-800;
+    border-radius: 6px;
+
+    &-content {
+      padding: 1rem;
+    }
+  }
+}
+
+.sidebar {
+  &-filter {
+    .item {
+      background-color: $black-700;
+      width: 100%;
+      padding: 6px 12px;
+      line-height: 1.5rem;
+      font-size: $fs-sm;
+      @include css3-prefix(transition, background-color 0.3s ease);
+
+      &:hover {
+        background-color: $black;
+      }
+    }
+  }
+}

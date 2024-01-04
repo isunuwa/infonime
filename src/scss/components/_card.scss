@@ -1,33 +1,57 @@
-.line-clamp {
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
-}
-
-.anime-overview {
-  background-color: rgba($black-700, 1);
-  padding: 8px 16px;
-  border-radius: 14px;
-  display: inline-block;
-
-  > p {
-    margin-bottom: 6px;
+.line {
+  &-clamp {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
   }
 }
 
-.anm-card{
+.anime {
+  &-overview {
+    background-color: rgba($black-700, 1);
+    padding: 8px 16px;
+    border-radius: 14px;
+    display: inline-block;
 
-  &--header, &--body{
-    padding: 10px 16px;
+    > p {
+      margin-bottom: 6px;
+    }
   }
-  
-  &--header{
-    
+}
+
+.anm {
+  &-title {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
   }
 
-  &--body{
-    background-color: $black-800;
-    border-radius: $br-normal;
+  // card styles
+  &-card {
+    &--header,
+    &--body {
+      padding: 10px 16px;
+    }
+
+    &--body {
+      background-color: $black-800;
+      border-radius: $br-normal;
+    }
+  }
+
+  // card description
+  &-detail {
+    &-title {
+      font-size: $fs-lg;
+      font-weight: $fw-medium;
+      margin-bottom: 2px;
+    }
+
+    &-type {
+      color: $primary-200;
+      display: inline-block;
+      min-width: 70px;
+    }
   }
 }
