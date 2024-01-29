@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Genre, Rating, Status, Type, Order, Sort } from './../filter-data';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { FilterService } from '../services/filter.service';
+import { FilterService } from '../services/FilterService';
 import { Anime } from '../../anime/models/anime.module';
 
 @Component({
@@ -66,10 +66,23 @@ export class FilterComponent implements OnInit {
       ...formData,
     };
 
-    let res = this.getFilterAnime(requestBody);
+    this.getFilterAnime(requestBody);
   }
 
   resetFilter(): void {
     this.filterForm.reset();
+    const formData = this.filterForm.value;
+
+    const params = {
+      page: this.pageIndex,
+      limit: this.pageSize,
+    };
+
+    const requestBody = {
+      ...params,
+      ...formData,
+    };
+
+    this.getFilterAnime(requestBody);
   }
 }

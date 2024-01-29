@@ -80,7 +80,11 @@
           <button class="btn btn-dark w-100 mt-2 me-2" type="submit">
             <i class="fas fa-filter mr-1"></i>Filter
           </button>
-          <button class="btn btn-outline-light w-100 mt-2" type="button" (click)="resetFilter()">
+          <button
+            class="btn btn-outline-light w-100 mt-2"
+            type="button"
+            (click)="resetFilter()"
+          >
             <i class="fas fa-filter mr-1"></i>Clear
           </button>
         </div>
@@ -91,6 +95,11 @@
 
 <div class="block_area">
   <div class="block_area-content">
+    <!-- pagination -->
+    <app-pagination
+      [paginationAlignment]="'justify-content-end'"
+    ></app-pagination>
+    <!-- pagination -->
     <div class="row g-4">
       <div class="col-2" *ngFor="let anime of anime">
         <app-anime-item [anime]="anime"></app-anime-item>
