@@ -25,7 +25,7 @@ export class FilterComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private filterService: FilterService,
+    private filterService: FilterService
   ) {}
 
   ngOnInit(): void {
@@ -36,6 +36,7 @@ export class FilterComponent implements OnInit {
       type: [''],
       order: [''],
       sort: [''],
+      q: [''],
     });
 
     const params = {
@@ -47,7 +48,7 @@ export class FilterComponent implements OnInit {
   }
 
   getFilterAnime(queryParams: any): void {
-    this.filterService.getAnime(queryParams).subscribe((response) =>  {
+    this.filterService.getAnime(queryParams).subscribe((response) => {
       this.anime = response.data;
     });
   }
@@ -63,8 +64,12 @@ export class FilterComponent implements OnInit {
     const requestBody = {
       ...params,
       ...formData,
-    }
-  
+    };
+
     let res = this.getFilterAnime(requestBody);
+  }
+
+  resetFilter(): void {
+    this.filterForm.reset();
   }
 }
